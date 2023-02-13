@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container, CssBaseline } from "@mui/material";
+import { Navigate, Route, Routes } from "react-router-dom";
+import AddTaskPage from "./pages/AddTaskPage";
+import EditTaskPage from "./pages/EditTaskPage";
+import TasksPage from "./pages/TasksPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline>
+        <Container>
+          <Routes>
+            <Route path="/" element={<Navigate to="/tasks" />} />
+            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/tasks/new" element={<AddTaskPage />} />
+            <Route path="/tasks/:id/edit" element={<EditTaskPage />} />
+          </Routes>
+        </Container>
+      </CssBaseline>
+    </>
   );
 }
 
