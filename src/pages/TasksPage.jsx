@@ -28,8 +28,7 @@ const TasksPage = () => {
 
     try {
       setTasks(tasks.filter((task) => task.id !== id));
-      const response = await taskService.deleteTask(id);
-      console.log(response);
+      await taskService.deleteTask(id);
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 404) {

@@ -5,6 +5,9 @@ export function register(name, username, password) {
   return http.post("/users", { name, username, password });
 }
 
+export function registerAdmin(userId, isAdmin) {
+  return http.put(`/users/${userId}`, { isAdmin });
+}
 export function login(username, password) {
   return http.post("/auth", { username, password });
 }

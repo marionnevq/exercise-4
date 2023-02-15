@@ -85,14 +85,19 @@ const TaskForm = ({ onSubmit, initialValue }) => {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Switch onChange={handleSwitch} checked={form.completed} />
-                  }
-                  label="Completed"
-                />
-              </Grid>
+              {initialValue && (
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        onChange={handleSwitch}
+                        checked={form.completed}
+                      />
+                    }
+                    label="Completed"
+                  />
+                </Grid>
+              )}
             </Grid>
           </CardContent>
           <CardActions>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import AddTaskPage from "./pages/AddTaskPage";
+import AdminRegisterPage from "./pages/AdminRegisterPage";
 import EditTaskPage from "./pages/EditTaskPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -17,7 +18,6 @@ function App() {
   const handleLogin = async (username, password) => {
     try {
       const response = await authService.login(username, password);
-      console.log(response.data.accessToken);
       localStorage.setItem("accessToken", response.data.accessToken);
       setAccessToken(response.data.accessToken);
       navigate("/");
@@ -59,6 +59,12 @@ function App() {
             <Route
               path="/register"
               element={accessToken ? <Navigate to="/" /> : <RegisterPage />}
+            />
+            <Route
+              path="/admin/register"
+              element={
+                accessToken ? <Navigate to="/" /> : <AdminRegisterPage />
+              }
             />
             <Route
               path="/login"
